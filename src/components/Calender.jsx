@@ -2,7 +2,12 @@ import React from 'react'
 
 const Calender = () => {
   return (
-    <div>Calender</div>
+    <div>
+        
+    <h1 className="text-3xl font-bold underline">
+      Calender
+    </h1>
+    </div>
   )
 }
 
