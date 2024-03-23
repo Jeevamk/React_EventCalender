@@ -9,19 +9,19 @@ export const GenerateDate = (month = dayjs().month(),year = dayjs().year()) => {
 
     //create prefix date
     for (let i=0;i<firstDateofMonth.day();i++){
-        arrayofDate.push(firstDateofMonth.day(i))
+        arrayofDate.push({currentMonth : false,date:firstDateofMonth.day(i)})
     }   
 
 
     //generate current date
     for (let i = firstDateofMonth.date() ; i<= lastDateofMonth.date() ; i++){
-        arrayofDate.push(firstDateofMonth.date(i))
+        arrayofDate.push({date:firstDateofMonth.date(i),currentMonth:true,today:firstDateofMonth.date(i).toDate().toDateString() === dayjs().toDate().toDateString()})
     }
 
     const remaining = 42-arrayofDate.length
 
     for (let i=lastDateofMonth.date()+1;i<= lastDateofMonth.date()+remaining;i++){
-        arrayofDate.push(lastDateofMonth.date(i))
+        arrayofDate.push({date:lastDateofMonth.date(i),currentMonth:false})
     }
 
   return arrayofDate
