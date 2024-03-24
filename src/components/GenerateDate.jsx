@@ -28,3 +28,19 @@ export const GenerateDate = (month = dayjs().month(),year = dayjs().year()) => {
 
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
+export const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+	"May",
+	"June",
+	"July",
+	"August",
+	"September",
+	"October",
+	"November",
+	"December",
+
+]
