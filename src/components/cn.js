@@ -1,3 +1,3 @@
-export default function Cn (...classes) {
+export default function cn (...classes) {
     return classes.filter(Boolean).join("")
 }
