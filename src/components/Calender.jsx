@@ -88,7 +88,7 @@
 // export default Calendar;
 
 
-import { useState } from 'react';
+import  { useState } from 'react';
 import dayjs from 'dayjs';
 import { GenerateDate, months } from './GenerateDate';
 import { GrFormNext, GrFormPrevious } from "react-icons/gr";
@@ -149,29 +149,26 @@ const Calendar = () => {
                         <h1 key={index} className="py-2 text-center text-sm font-semibold">{day}</h1>
                     ))}
                 </div>
-                <div className='w-full grid grid-cols-7'>
-                    {GenerateDate(today.month(), today.year()).map(({ date, currentMonth, today }, index) => {
-                        return (
-                            <div key={index} className='h-14 border-t-2 grid place-content-center text-sm'>
-                                <h1 className={cn(
+                <div className="grid grid-cols-7 gap-1">
+                    {GenerateDate(today.month(), today.year()).map(({ date, currentMonth, today }, index) => (
+                        <div key={index} className="flex justify-center items-center h-16 border border-gray-200">
+                            <h1
+                                className={cn(
                                     currentMonth ? "" : "text-gray-400",
-                                    today ? "bg-red-600 text-white h-10 w-10" : "",
-                                    selectDate
-                                        .toDate()
-                                        .toDateString() ===
-                                        date.toDate().toDateString()
+                                    today ? "bg-red-500 text-white h-10 w-10" : "",
+                                    selectDate.toDate().toDateString() === date.toDate().toDateString()
                                         ? "bg-black text-white h-10 w-10"
-                                        : "", "h-10 w-10  grid place-content-center hover:bg-black hover:text-white transition-all cursor-pointer select-none",
-
-                                )} onClick={() => {
+                                        : "" , "h-10 w-10  grid place-content-center hover:bg-black hover:text-white transition-all cursor-pointer select-none"
+                                )}
+                                onClick={() => {
                                     setSelectDate(date);
-                                }}>
-                                    {date.date()}
-                                </h1>
-                            </div>
-
-                        );
-                    })}
+                                    openModal();
+                                }}
+                            >
+                                {date.date()}
+                            </h1>
+                        </div>
+                    ))}
                 </div>
 
             </div>
