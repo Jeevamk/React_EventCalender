@@ -5,6 +5,8 @@ import { GrFormNext, GrFormPrevious } from "react-icons/gr";
 import { BiAddToQueue } from "react-icons/bi";
 import cn from './cn';
 import EventForm from './EventForm';
+import { MdOutlineDelete } from "react-icons/md";
+
 
 const Calendar = () => {
     const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
@@ -31,6 +33,14 @@ const Calendar = () => {
         console.log("Submitted Event Data:", formData);
         closeModal();
     };
+
+    const handleDeleteEvent = (index) => {
+        const updatedEvents = [...events];
+        updatedEvents.splice(index, 1);
+        localStorage.setItem('events', JSON.stringify(updatedEvents));
+        setEvents(updatedEvents);
+    };
+
 
     useEffect(() => {
         const storedEvents = JSON.parse(localStorage.getItem('events')) || [];
@@ -94,17 +104,28 @@ const Calendar = () => {
 
             </div>
 
+
             {events.filter(event => event.eventDate === selectDate.format("YYYY-MM-DD")).length > 0 && (
-                <div className="mt-4 border shadow-lg p-5 w-96">
-                    <h2 className="text-lg font-semibold mb-2">Events for {selectDate.format("YYYY-MM-DD")}:</h2>
+                <div className="mt-4 w-96">
+                    <h2 className="text-lg font-semibold mb-2 text-center">Events for {selectDate.format("YYYY-MM-DD")}</h2>
                     {events.filter(event => event.eventDate === selectDate.format("YYYY-MM-DD")).map((event, index) => (
-                        <div key={index} className="flex justify-between items-center py-2 px-4">
-                            <strong className="font-semibold">{event.eventName}</strong>
-                            <span className="text-gray-500">Time: {event.startTime} - {event.endTime}</span>
+                        <div key={index} className="border shadow-md p-4 mb-2 flex justify-between items-center">
+                            <div>
+                                <strong className="font-semibold block">{event.eventName}</strong>
+                                <span className="text-gray-500">Time: {event.startTime} - {event.endTime}</span>
+                            </div>
+                            <div>
+                                
+                                <button onClick={() => handleDeleteEvent(index)} className="text-red-600 hover:text-red-700 text-2xl">
+                                    <MdOutlineDelete />
+                                </button>
+                            </div>
                         </div>
                     ))}
                 </div>
             )}
+
+
 
 
 
@@ -127,3 +148,7 @@ const Calendar = () => {
 }
 
 export default Calendar;
+
+
+
+
