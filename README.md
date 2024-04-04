@@ -9,4 +9,4 @@ Currently, two official plugins are available:
 
 
 # Dayjs
-managing days
+Day.js is a minimalist JavaScript library for parsing, validating, manipulating, and formatting dates. Its purpose is to provide a lightweight alternative to moment.js, with a similar API but a much smaller file size. Day.js is often used in web development projects where handling dates and times is necessary but the full functionality and size of moment.js might be overkill. It offers an intuitive and easy-to-use interface for working with dates and times in JavaScript applications.
