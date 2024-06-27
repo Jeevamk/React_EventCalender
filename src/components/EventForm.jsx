@@ -66,4 +66,5 @@ const EventForm = ({ onSubmit, onCancel,selectedDate }) => {
     );
 }
 
+
 export default EventForm;
